@@ -427,7 +427,7 @@ public class EmployeeWork {
             }else if (selection == 99) {
 
 
-                    PrintWriter printWriter = new PrintWriter(System.currentTimeMillis().+ ".csv");
+                    PrintWriter printWriter = new PrintWriter(System.currentTimeMillis()+ ".csv");
 
                     printWriter.print("id,name,price,quantity,type,color,expiration_date");
                     printWriter.printf("Product name is %s and its price is %d $", "iPhone", 1000);

@@ -1,0 +1,5 @@
+pid,name,price,quantity,type,color,expiredate
+1,oranges,0.1,500,food,,30/11/2021
+2,toilet paper,2.5,150,sanitary,,
+3,lipstick,6.8,15,makeup,red,1/12/2021
+4,dog leash,10.3,6,other,blue,

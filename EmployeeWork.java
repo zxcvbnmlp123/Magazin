@@ -254,7 +254,7 @@ public class EmployeeWork {
                 String userChoice = "0";
                 Scanner input = new Scanner(System.in);
 
-                System.out.println("selekt6an");
+                System.out.println("selection");
                 userChoice = input.nextLine();
 
                 try {
@@ -274,7 +274,7 @@ public class EmployeeWork {
                 String userChoice = "0";
                 Scanner input = new Scanner(System.in);
 
-                System.out.println("selekt6an");
+                System.out.println("selection");
                 userChoice = input.nextLine();
 
                 try {
@@ -294,7 +294,7 @@ public class EmployeeWork {
                 String userChoice = "0";
                 Scanner input = new Scanner(System.in);
 
-                System.out.println("selekt6an");
+                System.out.println("selection");
                 userChoice = input.nextLine();
 
                 try {
@@ -314,7 +314,7 @@ public class EmployeeWork {
                 String userChoice = "0";
                 Scanner input = new Scanner(System.in);
 
-                System.out.println("selekt6an");
+                System.out.println("selection");
                 userChoice = input.nextLine();
 
                 try {
@@ -463,7 +463,7 @@ public class EmployeeWork {
         String userChoice = "0";
         Scanner input = new Scanner(System.in);
         while ((Integer.parseInt(userChoice) < 1 || Integer.parseInt(userChoice) > 16)) {
-            System.out.println("selekt6an");
+            System.out.println("selection");
             userChoice = input.nextLine();
 
             try {

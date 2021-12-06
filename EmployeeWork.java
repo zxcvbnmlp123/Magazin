@@ -11,7 +11,6 @@ import java.util.*;
 
 public class EmployeeWork {
 
-
     public static List<Employee> sortEmployeesBySalary(List<Employee> pEmployees) {
         List<Integer> salaries = new ArrayList<Integer>();
 
@@ -72,7 +71,6 @@ public class EmployeeWork {
 
     }
 
-
     public static Product getProductByNameAndID(int ID, String name, List<Product> pObjects) {
         List<String> names = new ArrayList<String>();
 
@@ -86,30 +84,30 @@ public class EmployeeWork {
     }
 
     public static List<Product> sortProductsByExpDate(Hashtable<Integer, Hashtable<String, String>> products) {
-        List<Product> sortedByDate = new ArrayList<Product>();
+        List<Product> sortedByDate = new ArrayList<Product>();  //
         List<String> dates = new ArrayList<String>();
 
 //makeup food drinks
         // Parser.getProductObjects(products)
         Enumeration<Integer> e = products.keys();
-        while (e.hasMoreElements()) {
+        while (e.hasMoreElements()) { // minavamne prez ele ot hasht, proverqvame dali el imaa atr exxdate
             int key = e.nextElement();
             if (products.get(key).get("type").equals("makeup") || products.get(key).get("type").equals("food") || products.get(key).get("type").equals("drink")) {
-                dates.add(products.get(key).get("expiredate"));
+                dates.add(products.get(key).get("expiredate")); //ako imat date gi dobawqme kujm dates lista
 
             } else {
                 products.remove(key);
             }
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-        Collections.sort(dates, (s1, s2) -> LocalDate.parse(s1, formatter).
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu"); //zadaame formata na datata
+        Collections.sort(dates, (s1, s2) -> LocalDate.parse(s1, formatter).// sortirame dates lista
                 compareTo(LocalDate.parse(s2, formatter)));
-        for (String date : dates) {
+        for (String date : dates) { //vzimame edna data, namirame koi el ot hasht iam tazi data, suzdavame java obekt ot nego i go dobawqme kum sortedd by date lista, prmahvame el ot hsassht(ako imaa el s ednakuvv date)
             Enumeration<Integer> ee = products.keys();
             while (ee.hasMoreElements()) {
                 int key = ee.nextElement();
-                if (products.get(key).get("expiredate").equals(date)) {
+                if (products.get(key).get("expiredate").equals(date)) { //
                     if (products.get(key).get("type").equals("food")) {
                         Food x = new Food(key, products.get(key).get("name"), Double.parseDouble(products.get(key).get("price")), Integer.parseInt(products.get(key).get("quantity")), products.get(key).get("expiredate"));
                         sortedByDate.add(x);
@@ -126,7 +124,6 @@ public class EmployeeWork {
                         products.remove(key);
                         break;
                     }
-
                 }
             }
         }
@@ -142,13 +139,13 @@ public class EmployeeWork {
         Collections.sort(prices);
         System.out.println(prices);
 
-        List<Integer> indexes = new ArrayList<Integer>();
+        List<Integer> indexes = new ArrayList<Integer>(); //minavame prez lista s ceni, za vsqka edna cena, namirame obekta s tazi cena, zapisvame idto na prod v indexes
         for (Double price : prices) {
             for (Product p : pObjects) {
                 if (p.price == price) {
                     int i = p.id;
                     indexes.add(i);
-                }
+                }// minavame prezz lista s indexi i za vs el ot products namirame koi produkt ima tozi index i do dobavqme kum sorted
             }
         }
         List<Product> sorted = new ArrayList<Product>();
@@ -195,9 +192,8 @@ public class EmployeeWork {
     }
 
     public static void runProgram(Hashtable<Integer, Hashtable<String, String>> products, Hashtable<Integer, Hashtable<String, String>> employees) throws IOException {
-        // Hashtable<Integer, Hashtable<String, String>> employees = Parser.getEmployeesList(csvEmployees);
+
         List<Employee> pEmployees = Parser.getEmployeeObjects(employees);// SAME
-        // Hashtable<Integer, Hashtable<String, String>> products = Parser.getProductsList(csvProducts);
 
         List<Product> pObjects = Parser.getProductObjects(products);
 
@@ -205,7 +201,7 @@ public class EmployeeWork {
             int selection = employeeWork();
             if (selection == 1) {
                 pObjects = Parser.getProductObjects(products);
-                for (Product p : pObjects) {
+                for (Product p : pObjects) { // za vseki predmet ot lista prodycts
                     System.out.println(p);
                 }
                 System.out.println("");
@@ -329,7 +325,7 @@ public class EmployeeWork {
                         System.out.println(p);
                     }
                 }
-            } else if (selection == 10) {
+            } else if (selection == 10) { // dobavqme el kum hashtabala i kum lista  producti
                 String pID = "0";
                 String pName = "";
                 String pQuantity = "0";
@@ -426,14 +422,11 @@ public class EmployeeWork {
                 }
             }else if (selection == 99) {
 
-
                     PrintWriter printWriter = new PrintWriter(System.currentTimeMillis()+ ".csv");
 
                     printWriter.print("id,name,price,quantity,type,color,expiration_date");
                     printWriter.printf("Product name is %s and its price is %d $", "iPhone", 1000);
                     printWriter.close();
-
-
             }
 
         }
